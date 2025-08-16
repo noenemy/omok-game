@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.current-player {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+#reset-btn {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+#reset-btn:hover {
+    background: #ff5252;
+}
+
+.board-container {
+    display: inline-block;
+    border: 3px solid #8B4513;
+    border-radius: 10px;
+    background: #DEB887;
+}
+
+#game-board {
+    display: block;
+    cursor: crosshair;
+}
+
+.game-status {
+    margin-top: 20px;
+}
+
+#winner-message {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4CAF50;
+    min-height: 30px;
+}
