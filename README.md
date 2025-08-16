@@ -14,7 +14,7 @@ A web-based AI vs Player Omok game built with HTML5 Canvas and JavaScript, featu
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/[your-username]/omok-game.git
+git clone https://github.com/noenemy/omok-game.git
 cd omok-game
 ```
 
