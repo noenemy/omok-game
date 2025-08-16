@@ -73,8 +73,38 @@ h1 {
 }
 
 #winner-message {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
     color: #4CAF50;
     min-height: 30px;
+}
+
+.winner-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #4CAF50;
+}
+
+.game-stats {
+    font-size: 0.9em;
+    color: #666;
+    line-height: 1.4;
+}
+
+.game-stats>div {
+    margin: 3px 0;
+}
+
+.score {
+    font-size: 1.1em !important;
+    font-weight: bold !important;
+    color: #ff6b6b !important;
+    margin-top: 8px !important;
+}
+
+.move-counter {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
 }

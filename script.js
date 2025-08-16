@@ -13,6 +13,12 @@ class OmokGame {
         this.gameOver = false;
         this.isAITurn = false;
         
+        // 게임 통계
+        this.moveCount = 0;
+        this.playerMoves = 0;
+        this.aiMoves = 0;
+        this.gameStartTime = null;
+        
         // 오디오 컨텍스트 초기화
         this.initAudio();
         
@@ -135,6 +141,13 @@ class OmokGame {
         this.currentPlayer = 1;
         this.gameOver = false;
         this.isAITurn = false;
+        
+        // 게임 통계 초기화
+        this.moveCount = 0;
+        this.playerMoves = 0;
+        this.aiMoves = 0;
+        this.gameStartTime = Date.now();
+        
         this.updateCurrentPlayer();
         this.winnerMessageElement.textContent = '';
     }
@@ -299,13 +312,30 @@ class OmokGame {
         this.board[y][x] = this.currentPlayer;
         this.drawBoard();
         
+        // 수 카운트 증가
+        this.moveCount++;
+        if (this.currentPlayer === 1) {
+            this.playerMoves++;
+        } else {
+            this.aiMoves++;
+        }
+        
         // 바둑돌 놓는 소리 재생
         this.playStoneSound();
         
         if (this.checkWin(x, y)) {
             this.gameOver = true;
             const winner = this.currentPlayer === 1 ? '플레이어' : 'AI';
-            this.winnerMessageElement.textContent = `${winner} 승리!`;
+            const gameResult = this.calculateGameResult();
+            this.winnerMessageElement.innerHTML = `
+                <div class="winner-title">${winner} 승리!</div>
+                <div class="game-stats">
+                    <div>총 ${this.moveCount}수만에 승부 결정</div>
+                    <div>플레이어: ${this.playerMoves}수 | AI: ${this.aiMoves}수</div>
+                    <div>게임 시간: ${gameResult.gameTime}</div>
+                    <div class="score">점수: ${gameResult.score}점 (${gameResult.grade})</div>
+                </div>
+            `;
             // 승리 소리 재생
             setTimeout(() => this.playWinSound(), 200);
             return true;
@@ -323,6 +353,51 @@ class OmokGame {
         }
         
         return true;
+    }
+    
+    calculateGameResult() {
+        const gameEndTime = Date.now();
+        const gameTimeMs = gameEndTime - this.gameStartTime;
+        const gameTimeSeconds = Math.floor(gameTimeMs / 1000);
+        const minutes = Math.floor(gameTimeSeconds / 60);
+        const seconds = gameTimeSeconds % 60;
+        const gameTime = `${minutes}분 ${seconds}초`;
+        
+        // 점수 계산 (적은 수로 이길수록 높은 점수)
+        let score = 1000;
+        
+        // 수 수에 따른 점수 (적을수록 좋음)
+        if (this.currentPlayer === 1) { // 플레이어 승리
+            score -= (this.playerMoves - 5) * 20; // 5수 이후부터 감점
+            score += 200; // 승리 보너스
+        } else { // AI 승리
+            score = Math.max(100, 500 - (this.aiMoves - 5) * 15); // AI 승리시 낮은 점수
+        }
+        
+        // 게임 시간에 따른 보너스/감점
+        if (gameTimeSeconds < 60) {
+            score += 100; // 1분 이내 보너스
+        } else if (gameTimeSeconds > 300) {
+            score -= 50; // 5분 초과 감점
+        }
+        
+        // 점수 범위 조정
+        score = Math.max(0, Math.min(1000, score));
+        
+        // 등급 계산
+        let grade;
+        if (score >= 900) grade = 'S급 고수';
+        else if (score >= 800) grade = 'A급 상급자';
+        else if (score >= 700) grade = 'B급 중급자';
+        else if (score >= 600) grade = 'C급 초급자';
+        else if (score >= 400) grade = 'D급 입문자';
+        else grade = '연습이 필요해요';
+        
+        return {
+            gameTime,
+            score: Math.round(score),
+            grade
+        };
     }
     
     playWinSound() {
@@ -400,6 +475,12 @@ class OmokGame {
             this.currentPlayerElement.textContent = '플레이어 (흑돌)';
         } else {
             this.currentPlayerElement.textContent = 'AI (백돌)';
+        }
+        
+        // 수 카운터 업데이트
+        const moveCountElement = document.getElementById('move-count');
+        if (moveCountElement) {
+            moveCountElement.textContent = this.moveCount;
         }
     }
     
