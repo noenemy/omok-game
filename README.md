@@ -1,83 +1,112 @@
-# 오목 게임 (Omok Game)
+# Omok Game (Five in a Row)
 
-웹 기반의 AI 대전 오목 게임입니다. HTML5 Canvas와 JavaScript로 구현되었으며, 실제 바둑돌 소리 효과까지 포함되어 있습니다.
+A web-based AI vs Player Omok game built with HTML5 Canvas and JavaScript, featuring realistic stone sound effects and 3D visual rendering.
 
-## 🎮 게임 특징
+## 🎮 Game Features
 
-- **AI 대전**: 똑똑한 AI와 대전할 수 있습니다
-- **입체적 바둑돌**: 그라데이션과 그림자 효과로 실제 바둑돌처럼 표현
-- **실제 바둑돌 소리**: Web Audio API를 사용한 현실적인 소리 효과
-- **반응형 디자인**: 깔끔하고 현대적인 UI
+- **AI Opponent**: Battle against an intelligent AI with strategic algorithms
+- **3D Stone Rendering**: Realistic stones with gradients and shadow effects
+- **Authentic Sound Effects**: Realistic stone placement sounds using Web Audio API
+- **Scoring System**: Performance-based scoring with move count and time tracking
+- **Responsive Design**: Clean and modern UI
 
-## 🚀 실행 방법
+## 🚀 Getting Started
 
-1. 저장소를 클론합니다:
+1. Clone the repository:
 ```bash
 git clone https://github.com/[your-username]/omok-game.git
 cd omok-game
 ```
 
-2. `index.html` 파일을 브라우저에서 열어주세요.
+2. Open `index.html` in your web browser.
 
-## 🎯 게임 방법
+## 🎯 How to Play
 
-1. 플레이어가 흑돌로 먼저 시작합니다
-2. 바둑판을 클릭해서 돌을 놓습니다
-3. AI가 백돌로 자동으로 응수합니다
-4. 먼저 5개의 돌을 연속으로 놓는 쪽이 승리합니다
+1. Player starts first with black stones
+2. Click on the board to place your stone
+3. AI automatically responds with white stones
+4. First to get 5 stones in a row (horizontal, vertical, or diagonal) wins!
 
-## 🤖 AI 전략
+## 🤖 AI Strategy
 
-AI는 다음과 같은 우선순위로 수를 선택합니다:
+The AI uses a priority-based decision system:
 
-1. **승리 수**: AI가 이길 수 있는 수
-2. **방어 수**: 플레이어의 승리를 막는 수
-3. **공격 수**: 4개 연속을 만드는 수
-4. **방어적 공격**: 플레이어의 4개 연속을 막는 수
-5. **3개 연속**: 3개 연속을 만드는 수
-6. **전략적 위치**: 중앙 근처의 좋은 위치
+1. **Winning Move**: Complete a five-in-a-row if possible
+2. **Defensive Move**: Block player's winning opportunities
+3. **Offensive Move**: Create four-in-a-row threats
+4. **Defensive Block**: Prevent player's four-in-a-row
+5. **Three-in-a-row**: Build consecutive stone patterns
+6. **Strategic Position**: Occupy center-focused advantageous positions
 
-## 🔊 소리 효과
+## 🏆 Scoring System
 
-Web Audio API를 사용하여 실제 바둑돌 소리를 재현합니다:
+Your performance is evaluated based on:
 
-- **충격음**: 바둑돌이 바둑판에 닿는 순간
-- **공명음**: 바둑돌의 울림
-- **나무 진동음**: 바둑판의 진동
-- **마찰음**: 표면 마찰 소리
+- **Move Efficiency**: Fewer moves = higher score
+- **Game Duration**: Faster wins earn time bonuses
+- **Victory Bonus**: Additional points for player wins
 
-## 🛠 기술 스택
+**Grade Rankings:**
+- S-Class Master (900+ points)
+- A-Class Advanced (800-899 points)
+- B-Class Intermediate (700-799 points)
+- C-Class Beginner (600-699 points)
+- D-Class Novice (400-599 points)
+- Practice Needed (< 400 points)
 
-- **HTML5 Canvas**: 게임 보드 렌더링
-- **JavaScript ES6+**: 게임 로직 및 AI
-- **Web Audio API**: 실시간 소리 생성
-- **CSS3**: 스타일링 및 애니메이션
+## 🔊 Sound Effects
 
-## 📁 파일 구조
+Realistic stone placement audio using Web Audio API:
+
+- **Impact Sound**: Initial stone-to-board contact
+- **Resonance**: Stone material vibration
+- **Wood Vibration**: Board resonance
+- **Surface Friction**: Stone-board interaction
+
+## 🛠 Technology Stack
+
+- **HTML5 Canvas**: Game board rendering and graphics
+- **JavaScript ES6+**: Game logic and AI algorithms
+- **Web Audio API**: Real-time sound generation
+- **CSS3**: Styling and visual effects
+
+## 📁 Project Structure
 
 ```
 omok-game/
-├── index.html      # 메인 HTML 파일
-├── script.js       # 게임 로직 및 AI
-├── style.css       # 스타일시트
-└── README.md       # 프로젝트 설명
+├── index.html      # Main HTML file
+├── script.js       # Game logic and AI
+├── style.css       # Stylesheet
+└── README.md       # Project documentation
 ```
 
-## 🎨 특징
+## 🎨 Game Features
 
-- 15x15 바둑판
-- 입체적인 바둑돌 렌더링
-- 실시간 승부 판정
-- 게임 리셋 기능
-- 현재 차례 표시
+- 15x15 game board
+- 3D stone rendering with lighting effects
+- Real-time win detection
+- Game reset functionality
+- Current player indicator
+- Move counter and statistics
+- Performance scoring system
 
-## 🌟 향후 개선 계획
+## 🌟 Future Enhancements
 
-- [ ] 난이도 조절 기능
-- [ ] 게임 기록 저장
-- [ ] 온라인 멀티플레이어
-- [ ] 다양한 바둑판 테마
+- [ ] Difficulty level adjustment
+- [ ] Game history and replay
+- [ ] Online multiplayer support
+- [ ] Multiple board themes
+- [ ] Tournament mode
+- [ ] Mobile touch optimization
+
+## 🎮 Game Statistics
+
+The game tracks:
+- Total moves played
+- Individual player move counts
+- Game duration
+- Performance score and grade
 
 ---
 
-즐거운 오목 게임 되세요! 🎯
+Enjoy playing Omok! 🎯
